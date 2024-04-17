@@ -5,6 +5,7 @@ import "./register.css";
 
 export default function Register() {
   const [username, setUsername] = useState("");
+  const [desc, setDesc] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(false);
@@ -17,6 +18,7 @@ export default function Register() {
         username,
         email,
         password,
+        desc,
       });
       res.data && window.location.replace("/login");
     } catch (err) {
@@ -48,6 +50,12 @@ export default function Register() {
           placeholder="Enter your password..."
           onChange={(e) => setPassword(e.target.value)}
         />
+        <label>Description</label>
+        <textarea rows={8} 
+        className="registerInput" 
+        placeholder="Tell Me About Your Self" 
+        onChange={(e) => setDesc(e.target.value)}/>
+
         <button className="registerButton" type="submit">
           Register
         </button>

@@ -1,10 +1,14 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { Context } from "../../context/Context";
 import "./sidebar.css";
 
 export default function Sidebar() {
   const [cats, setCats] = useState([]);
+  const PF = "http://localhost:5001/images/";
+  const { user } = useContext(Context);
 
   useEffect(() => {
     const getCats = async () => {
@@ -18,12 +22,11 @@ export default function Sidebar() {
       <div className="sidebarItem">
         <span className="sidebarTitle">ABOUT ME</span>
         <img
-          src="https://i.pinimg.com/236x/1e/3f/58/1e3f587572a7a7b20bbf1828595a1786--holiday-party-themes-holiday-gift-guide.jpg"
+          src={PF+user.profilePic}
           alt=""
         />
         <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate qui
-          necessitatibus nostrum illum reprehenderit.
+          {user.desc}
         </p>
       </div>
       <div className="sidebarItem">

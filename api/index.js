@@ -18,7 +18,7 @@ mongoose
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex: true,
-    useFindAndModify:true
+    useFindAndModify:false
   })
   .then(console.log("Connected to MongoDB"))
   .catch((err) => console.log(err));
@@ -32,16 +32,22 @@ const storage = multer.diskStorage({
   },
 });
 
+
 const upload = multer({ storage: storage });
 app.post("/api/upload", upload.single("file"), (req, res) => {
   res.status(200).json("File has been uploaded");
 });
+
 
 app.use("/api/auth", authRoute);
 app.use("/api/users", userRoute);
 app.use("/api/posts", postRoute);
 app.use("/api/categories", categoryRoute);
 
-app.listen("5000", () => {
+const port=5001;
+app.listen(port, () => {
   console.log("Backend is running.");
+  console.log(`listening to the port no ${port}.`);
 });
+
+// For start-> export NODE_OPTIONS=--openssl-legacy-provider and then npm start

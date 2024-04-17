@@ -20,15 +20,20 @@
   margin-top: 20px;
   display: flex;
   flex-direction: column;
+  border: 2px solid  rgba(161, 98, 98, 0.5);
+  padding: 20px 20px;
+  background-color:  rgba(10, 2, 2, 0.5);
 }
 
 .loginForm > label {
   margin: 10px 0;
+  color:white;
 }
 
 .loginInput {
   padding: 10px;
-  background-color: white;
+  width: 200px;
+  background-color: rgb(236, 241, 234);
   border: none;
 }
 
